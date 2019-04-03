@@ -1,0 +1,1 @@
+module.exports = 'Importing styles inside components is not allowed. Please import styles on the side of consuming application and pass classnames as props.';

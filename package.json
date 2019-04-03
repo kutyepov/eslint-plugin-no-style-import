@@ -1,0 +1,27 @@
+{
+  "name": "eslint-plugin-no-style-import",
+  "version": "0.0.0",
+  "description": "Plugin to prevent import of stylesheets in components.",
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin",
+    "no-style-import"
+  ],
+  "author": "Stanislav Kutyepov",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha ./tests/**/*.js"
+  },
+  "dependencies": {
+    "requireindex": "~1.1.0"
+  },
+  "devDependencies": {
+    "eslint": "~3.9.1",
+    "mocha": "^3.1.2"
+  },
+  "engines": {
+    "node": ">=8.9.4"
+  },
+  "license": "MIT"
+}

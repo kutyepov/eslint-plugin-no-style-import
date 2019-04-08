@@ -1,6 +1,6 @@
 # eslint-plugin-no-style-import
 
-Plugin that to prevent import of stylesheets in components.
+Plugin to prevent import of stylesheets in components.
 
 ## Installation
 

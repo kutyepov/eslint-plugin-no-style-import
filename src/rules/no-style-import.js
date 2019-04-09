@@ -6,9 +6,10 @@
 "use strict";
 
 const path = require('path');
-const ERROR_MESSAGE = require('./no-style-import-error-message');
+const get = require('lodash.get');
+const ERROR_MESSAGE = require('../constants/no-style-import-error-message');
 
-const isStylesImport = (importPath) => {
+const isStylesImport = (importPath = '') => {
     const stylesExtensions = ['.scss', '.css', '.less', '.sass'];
     const extname = path.extname(importPath).split('?')[0];
     return stylesExtensions.includes(extname);
@@ -22,21 +23,22 @@ module.exports = function (context) {
 
     return {
         ImportDeclaration: function (node) {
-            if (isStylesImport(node.source.value)) {
+            if (isStylesImport(get(node, 'source.value'))) {
                 reportError(node, context);
             }
         },
         VariableDeclarator: function (node) {
-            const { init } = node;
-            const { type, callee, arguments: argmnts } = init;
-            if (type === 'CallExpression' && callee.name === 'require' && isStylesImport(argmnts[0].value)) {
+            const type = get(node, 'init.type');
+            const calleeName = get(node, 'init.callee.name');
+            const firstArgument = get(node, 'init.arguments[0].value');
+            if (type === 'CallExpression' && calleeName === 'require' && isStylesImport(firstArgument)) {
                 reportError(node, context);
             }
         },
         ExpressionStatement: function (node) {
-            const { expression } = node;
-            const { callee, arguments: argmnts } = expression;
-            if (callee.name === 'require' && isStylesImport(argmnts[0].value)) {
+            const calleeName = get(node, 'expression.callee.name');
+            const firstArgument = get(node, 'expression.arguments[0].value');
+            if (calleeName === 'require' && isStylesImport(firstArgument)) {
                 reportError(node, context);
             }
         }

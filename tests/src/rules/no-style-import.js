@@ -3,8 +3,8 @@
 //  * @author Stanislav Kutyepov
 //  */
 
-var rule = require("../../../src/rules/no-style-import");
-const ERROR_MESSAGE = require('../../../src/rules/no-style-import-error-message');
+const rule = require("../../../src/rules/no-style-import");
+const ERROR_MESSAGE = require('../../../src/constants/no-style-import-error-message');
 const { RuleTester } = require("eslint");
 
 RuleTester.setDefaultConfig({

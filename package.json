@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "eslint": "7.6.0",
-    "mocha": "8.0.1"
+    "mocha": "8.1.0"
   },
   "engines": {
     "node": ">=8.9.4"
